@@ -1,16 +1,18 @@
 function Letter(char) {
     this.char = char;
-    this.guessed = false;
+    this.revealed = false;
 
-    this.getChar = function () {
-        if (this.guessed) {
-            return this.char;
-        }
-        return "_";
+    this.toString = function () {
+        return this.revealed ? this.char : "_";
     }
 
     this.guess = function (c) {
-        this.guessed = this.char === c;
+        if (this.char === c) {
+            this.revealed = true;
+            return true;
+        } else {
+            return false;
+        }
     }
 }
 
