@@ -7,19 +7,40 @@ function Word(word) {
         this.letters.push(new Letter(c));
     }
 
-    this.getString = function () {
+    this.toString = function () {
         let str = "";
 
-        for (let l of letters) {
-            str += l.getChar();
+        for (let l of this.letters) {
+            str += l.toString() + "  ";
         }
 
-        return str;
+        return str.trim();
     }
 
     this.guess = function (c) {
-        for (let l of letters) {
-            l.guess(c);
+        let result = false;
+
+        for (let l of this.letters) {
+            let changed = l.guess(c);
+            result = (result || changed);
+        }
+
+        return result;
+    }
+
+    this.isSolved = function () {
+        let result = true;
+
+        for (let l of this.letters) {
+            result = result && l.revealed;
+        }
+
+        return result;
+    }
+
+    this.reveal = function () {
+        for (let l of this.letters) {
+            l.revealed = true;
         }
     }
 }
