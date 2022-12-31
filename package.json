@@ -5,7 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "inquirer": "^7.0.0",
-    "inquirer-maxlength-input-prompt": "^1.0.0"
+    "inquirer-maxlength-input-prompt": "^1.0.2"
   },
   "devDependencies": {},
   "scripts": {
